@@ -3,7 +3,30 @@ import os
 
 
 class Utils_function:
+    '''
+    import sys
+    path = os.path.join(os.path.dirname(os.getcwd()), "scripts")
+    sys.path.append(path)
+    from utils import Utils_function
+    '''
     def __init__(self, SparkSession, ptw, truncate):
+        '''
+        To read different type of file use spark. And show the first metadata after read.
+
+        Parameters
+        ----------
+        self : class
+        SparkSession : DataFrame
+        ptw :
+            The relative path of the file to read, default '../data/tables/'
+        truncate : int, default 80
+            Parameter of `show` function spark dataframe, which control the maximum
+            number of characters per row.
+        Examples
+        --------
+        >>> utils= Utils_function(SparkSession = spark_session, ptw = '../generic-buy-now-pay-later-project-group-24/data/tables/', truncate = 80)
+        >>> utils= Utils_function(SparkSession = spark_session, ptw = '../generic-buy-now-pay-later-project-group-24/data/tables/', truncate = 20)
+            '''
         self.spark_session:SparkSession = SparkSession
         self.ptw = ptw
         self.truncate = truncate
@@ -15,28 +38,21 @@ class Utils_function:
 
        Parameters
        ----------
-       spark_session : DataFrame
+       self : class
        file_name: str
            The full name of the file to read.
-       ptw :
-           The relative path of the file to read, default '../data/tables/'
        type : {'parquet', 'csv'}, default 'parquet'
-       truncate : int, default 80
-           Parameter of `show` function spark dataframe, which control the maximum
-           number of characters per row.
        sep : str, default ','
            For csv reading, control the seperate character.
-
 
        Returns
        -------
        Spark DataFrame
            A DataFrame of the read file.
 
-
        Examples
        --------
-       >>> sdf = read_file(spark, 'tbl_merchants.parquet')
+       >>> sdf = Utils_function.read_file(self = utils, file_name='consumer_user_details.parquet',type='parquet', sep=',')
        |> Loading File...
        |> Loading Finished!
        -RECORD 0----------------------------------------------------------------------------------------
@@ -45,16 +61,7 @@ class Utils_function:
         merchant_abn | 10023283211
        only showing top 1 row
 
-       >>> sdf = read_file(spark, 'tbl_merchants.parquet', truncate=20)
-       |> Loading File...
-       |> Loading Finished!
-       -RECORD 0----------------------------
-        name         | Felis Limited
-        tags         | ((furniture, home...
-        merchant_abn | 10023283211
-       only showing top 1 row
-
-       >>> sdf = read_file(spark, 'tbl_consumer.csv', type='csv', sep='|')
+       >>> sdf = Utils_function.read_file(self = utils, file_name='tbl_consumer.csv',type='csv', sep='|')
        |> Loading File...
        |> Loading Finished!
        -RECORD 0---------------------------------
@@ -84,21 +91,21 @@ class Utils_function:
 
         Parameters
         ----------
-        path : str
+        folder_path : str
             The relative path of the new folder. 
 
 
         Examples
         --------
-        >>> create_folder('../data/temp')
+        >>> Utils_function.create_folder(self = utils, folder_path = '../data/temp')
         |> Create Successfully!
 
-        >>> create_folder('../data/tables/consumer_user_details.parquet')
+        >>> Utils_function.create_folder(self = utils, folder_path = '../data/tables/consumer_user_details.parquet')
         |> The folder name duplicated with a file!
         |> Files already exist under the upper folder:
         ['transactions_20210228_20210827_snapshot', '.DS_Store', '.gitkeep', 'consumer_user_details.parquet', 'tbl_consumer.csv', 'tbl_merchants.parquet']
 
-        >>> create_folder('../data/tables')
+        >>> Utils_function.create_folder(self = utils, folder_path = '../data/tables')
         |> The folder already exist!
         |> Files already exist under this folder:
         ['transactions_20210228_20210827_snapshot', '.DS_Store', '.gitkeep', 'consumer_user_details.parquet', 'tbl_consumer.csv', 'tbl_merchants.parquet']
@@ -131,9 +138,9 @@ class Utils_function:
 
         Examples
         --------
-        >>> temp_record_sdf(sdf, path='../data/temp')
-        >>> temp_record_sdf(sdf, path='../data/temp')
-        >>> temp_record_sdf(sdf, path='../data/temp', overwrite=True)
+        >>> Utils_function.temp_record_sdf(self = utils, path='../generic-buy-now-pay-later-project-group-24/data/temp')
+        >>> Utils_function.temp_record_sdf(self = utils, path='../generic-buy-now-pay-later-project-group-24/data/temp')
+        >>> Utils_function.temp_record_sdf(self = utils, path='../generic-buy-now-pay-later-project-group-24/data/temp', overwrite=True)
         |> Waiting for saving...
         |> Save Successfully!
         --
@@ -143,10 +150,10 @@ class Utils_function:
         |> Waiting for saving...
         |> Save Successfully!
 
-        >>> print(os.listdir( '../data' ))
-        >>> print(os.path.isfile( '../data/temp.parquet' ))
-        >>> temp_record_sdf(sdf, path='../data/temp.parquet')
-        >>> temp_record_sdf(sdf, path='../data/temp.parquet', overwrite=True)
+        >>> print(os.listdir( '../generic-buy-now-pay-later-project-group-24/data' ))
+        >>> print(os.path.isfile( '../generic-buy-now-pay-later-project-group-24/data/temp.parquet' ))
+        >>> Utils_function.temp_record_sdf(self = utils, path='../generic-buy-now-pay-later-project-group-24/data/temp.parquet')
+        >>> Utils_function.temp_record_sdf(self = utils, path='../generic-buy-now-pay-later-project-group-24/data/temp.parquet', overwrite=True)
         ['tables', '.gitkeep', 'README.md', 'temp.parquet', 'curated']
         --
         True
@@ -185,49 +192,30 @@ class Utils_function:
                 print(f'|> The name duplicated with a file!\n   Change the name or change the attr `overwrite` to cover the origin data.')
 
 
-    def temp_record_query(sql_query:SparkSession.sql, *cols, path, overwrite = False):
-        #     '''
-        # Save current progress for future steps
+    def temp_record_query(self, sql_query:SparkSession.sql, *cols, path='../generic-buy-now-pay-later-project-group-24/data/temp', overwrite = False):
+        '''
+        Save current progress for future steps
 
-        # Parameters
-        # ----------
-        # sql_query : spark sql query
-        # *cols : 'ColumnsOrName'
-        #     Name of columns.
-        # path : str
-        #     Path to save data, default as `../data/temp`
-        # overwrite : bool
-        #     Set if cover the origin data, default False
+        Parameters
+        ----------
+        sql_query : spark sql query
+        *cols : 'ColumnsOrName'
+            Name of columns.
+        path : str
+            Path to save data, default as `../data/temp`
+        overwrite : bool
+            Set if cover the origin data, default False
 
 
-        # Examples
-        # --------
-        # >>> sql_query = sdf.orderBy('merchant_abn')
-        # >>> temp_record_query(sql_query, 'name', 'tags', 'merchant_abn')
-        # |> Waiting for saving...
-        # |> Save Successfully!
-        #     '''
+        Examples
+        --------
+        >>> sql_query = sdf.orderBy('merchant_abn')
+        >>> temp_record_query(self = utils, sql_query = sql_query, 'name', 'tags', 'merchant_abn')
+        |> Waiting for saving...
+        |> Save Successfully!
+            '''
         Utils_function.temp_record_sdf(sql_query.toDF(*cols), path=path, overwrite=overwrite)
 
-
-if __name__ == '__main__':
-    spark_session = (
-        # Create a spark session (which will run spark jobs)
-        SparkSession.builder.appName("Project 1")
-        .config("spark.sql.repl.eagerEval.enabled", True)
-        .config("spark.sql.parquet.cacheMetadata", "true")
-        .config('spark.executor.memory', '10g')
-        .config('spark.driver.memory', '12g')
-        .config('spark.driver.maxResultsSize', '10 GiB')
-        .config('spark.shuffle.file.buffer', '64k')
-        # .config("spark.network.timeout", "3600s")
-        # .master("local[6]")
-        .getOrCreate()
-        )
-    utils= Utils_function(spark_session,'../generic-buy-now-pay-later-project-group-24/data/tables/', 80)
-    sdf = Utils_function.read_file(utils, file_name='consumer_user_details.parquet',type='parquet', sep=',')
-    Utils_function.create_folder(utils,'../generic-buy-now-pay-later-project-group-24/data/temp')
-    Utils_function.temp_record_sdf(utils, sdf, path='../generic-buy-now-pay-later-project-group-24/data/temp')
     
 
 
