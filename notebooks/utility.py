@@ -172,8 +172,8 @@ True
     elif os.path.isdir(path):
         try:
             print('|> Waitting for saving...')
-            if (overwrite):
-                sdf.write.partitionBy('order_datetime').parquet(path, mode = 'overwrite')
+            if (overwrite == True):
+                sdf.write.parquet(path, mode = 'overwrite')
             else:
                 sdf.write.parquet(path)
             print('|> Save Successfully!')
