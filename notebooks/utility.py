@@ -106,6 +106,7 @@ Examples
     if not os.path.exists(path):
         os.makedirs(path)
         print('|> Create Successfully!')
+        return True
     
     # if the folder aleady created, the print out the files under this folder
     elif os.path.isdir(path):
@@ -115,7 +116,7 @@ Examples
     elif os.path.isfile(path):
         upper_path = '/'.join(path.split('/')[:-1])
         print(f'|> The folder name duplicated with a file!\n|> Files already exist under the upper folder:\n   {os.listdir( upper_path )}')
-    return 
+    return False
 
 
 
