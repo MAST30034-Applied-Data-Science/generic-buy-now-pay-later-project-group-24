@@ -38,6 +38,17 @@ if os.path.exists(zip_path):
 
 
 
+# SA2 Data
+# https://www.abs.gov.au/statistics/people/population/regional-population/2021#data-download
+url = 'https://www.abs.gov.au/statistics/people/population/regional-population/2021/32180DS0001_2001-21.xlsx'
+download_data(url, 'external_SA2_data.xlsx')
+path = './data/tables/external_SA2_data'
+data = pd.read_excel(path+'.xlsx', sheet_name='Table 1')
+data.to_csv(path+'.csv')
+os.remove(path+'.xlsx')
+
+
+
 # POA boundary
 print("\n|> Download External Dataset: SA2...")
 # https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files#downloads-for-gda2020-digital-boundary-files
@@ -79,42 +90,42 @@ os.remove(retail_path+'.xlsx')
 
 
 
-# # Web crawling --- cases_daily_aus_NET
-# from selenium import webdriver
-# from selenium.webdriver.chrome.service import Service
-# from  selenium.webdriver.common.by import By
-# print("\n|> Download External Dataset: cases_daily_aus_NET...")
-# print('Please Enter Your Chomedriver Location: ')
-# chromedriver_loc = input()
-# # chromedriver_loc = '/Users/sukixuu/Downloads/chromedriver'
+# Web crawling --- cases_daily_aus_NET
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from  selenium.webdriver.common.by import By
+print("\n|> Download External Dataset: cases_daily_aus_NET...")
+print('Please Enter Your Chomedriver Location: ')
+chromedriver_loc = input()
+# chromedriver_loc = '/Users/sukixuu/Downloads/chromedriver'
 
 
-# # 创建webDriver对象，指明使用chrome浏览器驱动
-# wd = webdriver.Chrome(service=Service(chromedriver_loc))
+# 创建webDriver对象，指明使用chrome浏览器驱动
+wd = webdriver.Chrome(service=Service(chromedriver_loc))
 
-# # 隐式等待,防止程序过快而网页反应不过来(5s)
-# wd.implicitly_wait(5)
+# 隐式等待,防止程序过快而网页反应不过来(5s)
+wd.implicitly_wait(5)
 
-# # 下载state data
-# # 调用webDriver 对象的get方法，可以让浏览器打开指定网址
-# wd.get('https://infogram.com/1p20yj1nk2rqp7c0qq6de1r0egcrqv7e5kk?live')
+# 下载state data
+# 调用webDriver 对象的get方法，可以让浏览器打开指定网址
+wd.get('https://infogram.com/1p20yj1nk2rqp7c0qq6de1r0egcrqv7e5kk?live')
 
-# # element = wd.find_element(By.ID, 'igc-tab-content1')
-# # element.click()
-
-# element = wd.find_element(By.CLASS_NAME, 'igc-data-download')
+# element = wd.find_element(By.ID, 'igc-tab-content1')
 # element.click()
 
-# wd.implicitly_wait(5)
-# wd.close()
+element = wd.find_element(By.CLASS_NAME, 'igc-data-download')
+element.click()
 
-# print('Please Enter Your Chomedriver Download Location: ')
-# download_loc = input()
-# # download_loc = '/Users/sukixuu/Downloads'
-# download_loc = download_loc + '/cases_daily_aus_NET.csv'
+wd.implicitly_wait(5)
+wd.close()
 
-# renamed_loc = './data/tables/external_cases_daily_aus_NET.csv'
-# os.rename(download_loc, renamed_loc)
+print('Please Enter Your Chomedriver Download Location: ')
+download_loc = input()
+# download_loc = '/Users/sukixuu/Downloads'
+download_loc = download_loc + '/cases_daily_aus_NET.csv'
+
+renamed_loc = './data/tables/external_cases_daily_aus_NET.csv'
+os.rename(download_loc, renamed_loc)
 
 
 
