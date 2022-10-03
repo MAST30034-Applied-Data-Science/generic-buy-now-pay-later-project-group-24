@@ -7,7 +7,8 @@ import random
 
 def main():
     print("Reading data...")
-    data = pandas.read_parquet('dataset.parquet')
+    #data = pandas.read_parquet('dataset.parquet')
+    data = pandas.read_parquet('../data/curated/data')
     print("Sorting data...")
     data = data.sort_values(by=['order_datetime'])
 
