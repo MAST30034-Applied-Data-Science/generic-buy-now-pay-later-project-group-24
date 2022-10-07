@@ -50,7 +50,7 @@ os.remove(path+'.xlsx')
 
 
 # POA boundary
-print("\n|> Download External Dataset: SA2...")
+print("\n|> Download External Dataset: POA...")
 # https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files#downloads-for-gda2020-digital-boundary-files
 url = 'https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files/POA_2021_AUST_GDA2020_SHP.zip'
 download_data(url, 'external_POA.zip')
@@ -157,7 +157,7 @@ Example:
 
 |> Download External Dataset: cases_daily_aus_NET...
 Please Enter Your Chomedriver Location: 
-/Users/sukixuu/Downloads/chromedriver 
+/Users/sukixuu/Downloads/chromedriver
 Please Enter Your Chomedriver Download Location: 
 /Users/sukixuu/Downloads/                        
 '''
