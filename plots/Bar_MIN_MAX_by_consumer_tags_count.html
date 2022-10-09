@@ -7,11 +7,11 @@
 
 </head>
 <body>
-    <div id="4427d3675e4b4be0a51fd82486bd33cd" class="chart-container" style="width:1000px; height:900px;"></div>
+    <div id="4f38fd46d18c446d93cafaed8b2ab902" class="chart-container" style="width:1000px; height:900px;"></div>
     <script>
-        var chart_4427d3675e4b4be0a51fd82486bd33cd = echarts.init(
-            document.getElementById('4427d3675e4b4be0a51fd82486bd33cd'), 'white', {renderer: 'canvas'});
-        var option_4427d3675e4b4be0a51fd82486bd33cd = {
+        var chart_4f38fd46d18c446d93cafaed8b2ab902 = echarts.init(
+            document.getElementById('4f38fd46d18c446d93cafaed8b2ab902'), 'white', {renderer: 'canvas'});
+        var option_4f38fd46d18c446d93cafaed8b2ab902 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -21,7 +21,7 @@
     "animationEasingUpdate": "cubicOut",
     "animationDelayUpdate": 0,
     "color": [
-        "#ca8622",
+        "#6950a1",
         "#2f4554",
         "#c23531",
         "#2f4554",
@@ -52,33 +52,35 @@
         {
             "type": "bar",
             "name": "MIN",
+            "xAxisIndex": 0,
+            "yAxisIndex": 0,
             "legendHoverLink": true,
             "data": [
                 1,
                 1,
-                4,
+                2,
                 1,
+                2,
+                15,
+                5,
+                8,
+                21,
+                1,
+                12,
+                4,
+                30,
+                1,
+                1,
+                1,
+                1,
+                2,
+                2,
+                12,
                 3,
-                17,
-                5,
-                10,
-                26,
-                1,
-                14,
-                5,
-                39,
                 1,
                 1,
-                1,
-                2,
-                2,
-                2,
-                16,
-                4,
-                1,
-                1,
-                41,
-                19
+                37,
+                25
             ],
             "showBackground": false,
             "barMinHeight": 0,
@@ -100,33 +102,35 @@
         {
             "type": "bar",
             "name": "MAX",
+            "xAxisIndex": 0,
+            "yAxisIndex": 0,
             "legendHoverLink": true,
             "data": [
                 20,
                 7,
-                40,
-                25,
-                33,
-                66,
-                41,
-                52,
-                82,
-                8,
-                62,
-                43,
-                100,
-                26,
-                25,
-                4,
+                37,
+                23,
                 32,
-                29,
-                29,
-                60,
-                35,
-                19,
+                61,
+                37,
+                49,
+                73,
                 8,
-                110,
-                69
+                57,
+                39,
+                91,
+                23,
+                25,
+                3,
+                30,
+                28,
+                30,
+                54,
+                33,
+                20,
+                10,
+                99,
+                83
             ],
             "showBackground": false,
             "barMinHeight": 0,
@@ -192,7 +196,7 @@
             "axisLabel": {
                 "show": true,
                 "position": "top",
-                "rotate": 90,
+                "rotate": -75,
                 "margin": 8,
                 "interval": 0
             },
@@ -270,18 +274,20 @@
             "itemGap": 10
         }
     ],
-    "dataZoom": {
-        "show": true,
-        "type": "slider",
-        "realtime": true,
-        "start": 20,
-        "end": 80,
-        "orient": "vertical",
-        "zoomLock": false,
-        "filterMode": "filter"
-    }
+    "grid": [
+        {
+            "show": false,
+            "zlevel": 0,
+            "z": 2,
+            "bottom": "55%",
+            "containLabel": false,
+            "backgroundColor": "transparent",
+            "borderColor": "#ccc",
+            "borderWidth": 1
+        }
+    ]
 };
-        chart_4427d3675e4b4be0a51fd82486bd33cd.setOption(option_4427d3675e4b4be0a51fd82486bd33cd);
+        chart_4f38fd46d18c446d93cafaed8b2ab902.setOption(option_4f38fd46d18c446d93cafaed8b2ab902);
     </script>
 </body>
 </html>
