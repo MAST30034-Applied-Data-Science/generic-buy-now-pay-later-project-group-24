@@ -25,9 +25,9 @@ url = 'https://www.abs.gov.au/statistics/standards/australian-statistical-geogra
 download_data(url, 'external_SA2.zip')
 
 zip_path = './data/tables/external_SA2.zip'
-f = zipfile.ZipFile(zip_path, 'r') # 压缩文件位置
+f = zipfile.ZipFile(zip_path, 'r') # Compressed file location
 for file in f.namelist():
-    # 解压到external_SA2
+    # Decompress to external_SA2
     f.extract(file, './data/tables/external_SA2/')
 f.close()
 print('|> Finished Download!')
@@ -56,9 +56,9 @@ url = 'https://www.abs.gov.au/statistics/standards/australian-statistical-geogra
 download_data(url, 'external_POA.zip')
 
 zip_path = './data/tables/external_POA.zip'
-f = zipfile.ZipFile(zip_path, 'r') # 压缩文件位置
+f = zipfile.ZipFile(zip_path, 'r') # Compressed file location
 for file in f.namelist():
-    # 解压到external_POA
+    # Decompress to external_SA2
     f.extract(file, './data/tables/external_POA/')
 f.close()
 print('|> Finished Download!')
@@ -100,14 +100,14 @@ chromedriver_loc = input()
 # chromedriver_loc = '/Users/sukixuu/Downloads/chromedriver'
 
 
-# 创建webDriver对象，指明使用chrome浏览器驱动
+# Create a webDriver object specifying the use of the chrome browser driver
 wd = webdriver.Chrome(service=Service(chromedriver_loc))
 
-# 隐式等待,防止程序过快而网页反应不过来(5s)
+# Implicitly wait to prevent the program from going too fast for the page to respond (5s)
 wd.implicitly_wait(5)
 
-# 下载state data
-# 调用webDriver 对象的get方法，可以让浏览器打开指定网址
+# Download state data
+# Call the get method of the webDriver object to allow the browser to open the specified URL
 wd.get('https://infogram.com/1p20yj1nk2rqp7c0qq6de1r0egcrqv7e5kk?live')
 
 # element = wd.find_element(By.ID, 'igc-tab-content1')
