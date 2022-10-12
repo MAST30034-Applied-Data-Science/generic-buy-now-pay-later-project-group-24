@@ -17,11 +17,6 @@ Note to groups: Make sure to read the `README.md` located in `./data/README.md` 
 
 ---
 
-# Generic Buy Now, Pay Later Project
-Groups should generate their own suitable `README.md`.
-
-Note to groups: Make sure to read the `README.md` located in `./data/README.md` for details on how the weekly datasets will be released.
-
 ### Download Data 
 *external*: 
 - `scripts/download_external.py`  
@@ -29,6 +24,8 @@ Note to groups: Make sure to read the `README.md` located in `./data/README.md` 
 - - SA2 Geo dataset: `data/tables/external_SA2/`
 - - SA2 data: `data/tables/external_SA2_data.csv`
 - - new cases per day: `data/tables/external_cases_daily_aus_NET.csv`
+
+---
 
 ### Preprocessing
 *Merchants*: 
@@ -47,9 +44,17 @@ Note to groups: Make sure to read the `README.md` located in `./data/README.md` 
 - `notebooks/external_geo.ipynb` 
 - - deal with another external geo dataset and save to `data/curated/external_pos_population/` & `data/curated/external_pos_population.parquet`
 
+---
+
+### Data Connection
+
 *dataset*: 
 - `notebooks/connect.ipynb` 
 - - save to `data/curated/data`
+
+---
+
+### Statistic Model
 
 *dataset*: 
 - `notebooks/change_type.ipynb` 
@@ -64,11 +69,17 @@ Note to groups: Make sure to read the `README.md` located in `./data/README.md` 
 - -  Prediction of the probability of fraud for consumers by day and save to `data/curated/consumer_fraud/`
 - `models/merchants_fraud.ipynb`
 - -  Prediction of the probability of fraud for merchants by day and save to `data/curated/merchants_fraud/`
+
+---
+### Rank Model
+
 - `models/plot.ipynb`
 - - Categorisation of merchants according to consumer spending habits
 - `models/rank_model.ipynb`
 - - The final fraud probability value is calculated, the merchants are ranked for each segment and the merchants are ranked overall and save to `data/curated/rank_final.parquet`
 
+---
+### Summary Notebooks
 *Summary*
 - `models/Summary.ipynb`
 - - For a summary of the entire code as well as the graphical presentation and the presentation of the results.
