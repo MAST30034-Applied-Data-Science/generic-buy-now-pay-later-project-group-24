@@ -4,16 +4,7 @@ Groups should generate their own suitable `README.md`.
 
 Note to groups: Make sure to read the `README.md` located in `./data/README.md` for details on how the weekly datasets will be released.
 
-
-<!-- < img src="https://images.unsplash.com/photo-1501776192086-602832fae6e6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"> -->
-
-# < img src="https://cdn.freebiesupply.com/logos/large/2x/the-university-of-melbourne-logo-svg-vector.svg" width=15% align=left> INFO30005 Group Project (Team 7k7k)
-This repository is created for INFO30005 Semester 1 2022, Team 7k7k Group Project
-
-***Diabetes@Home***
-
 ---
-
 
 ## Team members
 | Name | Contact | Student Id |
