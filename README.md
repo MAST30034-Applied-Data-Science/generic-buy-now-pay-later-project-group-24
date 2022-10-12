@@ -6,6 +6,13 @@ Note to groups: Make sure to read the `README.md` located in `./data/README.md` 
 
 ---
 
+### Package Installation
+
+- `requirements.txt`
+- - Install the dependencies included in requirements.txt by `pip install -r requirement.txt` or `pip3 install -r requirement.txt`
+
+---
+
 ## Team members
 | Name | Contact | Student Id |
 | ---- | ---- | ---- |
