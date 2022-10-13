@@ -176,20 +176,20 @@ True
         sdf.write.parquet(path)
         print('|> Save Successfully!')
     
-    # if the folder aleady created, the print out the files under this folder
-    elif os.path.isdir(path):
-        try:
-            print('|> Waitting for saving...')
-            if (overwrite):
-                sdf.write.partitionBy('order_datetime').parquet(path, mode = 'overwrite')
-            else:
-                sdf.write.parquet(path)
-            print('|> Save Successfully!')
-        except Exception:
-            print('|> The folder already exist! Change the attr `overwrite` to cover the origin data.')
+    # # if the folder aleady created, the print out the files under this folder
+    # elif os.path.isdir(path):
+    #     try:
+    #         print('|> Waitting for saving...')
+    #         if (overwrite):
+    #             sdf.write.partitionBy('order_datetime').parquet(path, mode = 'overwrite')
+    #         else:
+    #             sdf.write.parquet(path)
+    #         print('|> Save Successfully!')
+    #     except Exception:
+    #         print('|> The folder already exist! Change the attr `overwrite` to cover the origin data.')
     
     # the name of the new folder is the same as a file already exist under the upper folder
-    elif os.path.isfile(path):
+    elif os.path.isfile(path) or os.path.isdir(path):
         if (overwrite):
             print('|> Waitting for saving...')
             sdf.write.parquet(path, mode = 'overwrite')
@@ -227,4 +227,4 @@ Examples
     '''
     # convert to spark dataframe and save
     temp_record_sdf(sql_query.toDF(*cols), path=path, overwrite=overwrite)
-    return 
+    return
