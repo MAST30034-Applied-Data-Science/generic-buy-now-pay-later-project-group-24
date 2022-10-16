@@ -1,7 +1,7 @@
 
 # Generic Buy Now, Pay Later Project
 
-Please use 9d47907adf91dd24565c980d1ee9160c0ea7bf54[https://github.com/MAST30034-Applied-Data-Science/generic-buy-now-pay-later-project-group-24/commit/9d47907adf91dd24565c980d1ee9160c0ea7bf54] as our final submission. 
+Please use [9d47907adf91dd24565c980d1ee9160c0ea7bf54](https://github.com/MAST30034-Applied-Data-Science/generic-buy-now-pay-later-project-group-24/commit/9d47907adf91dd24565c980d1ee9160c0ea7bf54) as our final submission. 
 
 Groups should generate their own suitable `README.md`.
 
